@@ -159,6 +159,7 @@
       padding: 0.25rem 0;
       border-bottom: 2px solid transparent;
       color: var(--color-text-soft);
+      transition: color 0.18s ease, border-bottom-color 0.18s ease;
     }
 
     .site-nav__link:hover,
@@ -394,6 +395,8 @@
 
     .section--alt {
       background: radial-gradient(circle at top, rgba(64, 192, 240, 0.1), transparent 55%);
+      border-top: 1px solid rgba(240, 224, 192, 0.05);
+      border-bottom: 1px solid rgba(240, 224, 192, 0.05);
     }
 
     .section__header {
@@ -462,6 +465,15 @@
     .feature-card__text {
       font-size: 0.9rem;
       color: var(--color-text-soft);
+    }
+
+    .feature-card__text ul {
+      padding-left: 1.1rem;
+      margin: 0.25rem 0 0;
+    }
+
+    .feature-card__text li {
+      margin-bottom: 0.25rem;
     }
 
     .feature-card__meta {
@@ -629,6 +641,19 @@
       display: flex;
       gap: var(--space-m);
     }
+
+    .site-footer__links a {
+      color: var(--color-text-soft);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: color 0.18s ease, border-bottom-color 0.18s ease;
+    }
+
+    .site-footer__links a:hover {
+      color: var(--color-logo);
+      border-bottom-color: rgba(240, 224, 192, 0.7);
+    }
   </style>
 </head>
 <body>
@@ -771,14 +796,14 @@
             <article class="feature-card">
               <div class="feature-card__label">Voraussetzungen</div>
               <h3 class="feature-card__title">Was du mitbringen solltest</h3>
-              <p class="feature-card__text">
+              <div class="feature-card__text">
                 <ul>
                   <li>Euro Truck Simulator 2, idealerweise mit ein paar DLCs</li>
                   <li>Mindestens 18 Jahre oder entsprechend reifes Verhalten</li>
                   <li>Respektvolle Fahrweise, keine Troll-Aktionen</li>
                   <li>Bereitschaft, unser Design/Branding zu nutzen</li>
                 </ul>
-              </p>
+              </div>
               <div class="feature-card__meta">
                 Kein Hardcore-RP, aber wir fahren so, dass es wie eine echte Spedition wirkt.
               </div>
@@ -787,14 +812,14 @@
             <article class="feature-card">
               <div class="feature-card__label">Fokus</div>
               <h3 class="feature-card__title">Wie wir unterwegs sind</h3>
-              <p class="feature-card__text">
+              <div class="feature-card__text">
                 <ul>
                   <li>Konvois mit klarer Struktur (Slots, Abfahrtszeiten)</li>
                   <li>Einzel-Touren, die du frei planen kannst</li>
                   <li>Schwerlast & Spezialtransporte optional</li>
                   <li>Fahren in Europa (Standard-Map & ggf. ProMods)</li>
                 </ul>
-              </p>
+              </div>
               <div class="feature-card__meta">
                 Reallife first – Teilnahme an Konvois ist erwünscht, aber nie Pflicht.
               </div>
@@ -803,14 +828,14 @@
             <article class="feature-card">
               <div class="feature-card__label">Organisation</div>
               <h3 class="feature-card__title">Wie wir intern arbeiten</h3>
-              <p class="feature-card__text">
+              <div class="feature-card__text">
                 <ul>
                   <li>Discord als Zentrale für Infos & Abstimmung</li>
                   <li>Klare Kanäle für Touren, Screenshots & Fragen</li>
                   <li>Einheitliches Logo & Lackierung für die Flotte</li>
                   <li>Transparente Regeln, kurz und verständlich</li>
                 </ul>
-              </p>
+              </div>
               <div class="feature-card__meta">
                 Kein durcheinander gewachsener Server – lieber wenige, sinnvolle Kanäle.
               </div>
@@ -933,6 +958,34 @@
       const nav = document.getElementById("site-nav");
       nav.classList.toggle("site-nav--open");
     }
+
+    // Active-State der Navigation je nach Scrollposition
+    const navLinks = document.querySelectorAll(".site-nav__list .site-nav__link");
+
+    const sections = Array.from(navLinks)
+      .map(link => {
+        const id = link.getAttribute("href").substring(1);
+        return document.getElementById(id);
+      })
+      .filter(Boolean);
+
+    const observerOptions = {
+      threshold: 0.55
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            const linkId = link.getAttribute("href").substring(1);
+            link.classList.toggle("site-nav__link--active", linkId === id);
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
