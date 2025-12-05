@@ -591,6 +591,12 @@
       font-size: 0.9rem;
     }
 
+    .contact-card h3 {
+      margin-top: 0;
+      margin-bottom: var(--space-xs);
+      font-size: 1rem;
+    }
+
     .contact-card p {
       margin-top: 0;
       color: var(--color-text-soft);
@@ -617,6 +623,13 @@
       background: var(--color-primary-soft);
       color: var(--color-primary);
       font-size: 0.78rem;
+    }
+
+    .contact-note {
+      font-size: 0.8rem;
+      color: var(--color-text-soft);
+      opacity: 0.85;
+      margin-top: var(--space-s);
     }
 
     /* ========== Footer ========== */
@@ -909,19 +922,27 @@
 
           <div class="contact-grid">
             <div class="contact-card">
+              <h3>Kontaktkanäle</h3>
               <p>
                 Am einfachsten erreichst du uns aktuell über <strong>Facebook</strong> und später über
                 <strong>Discord</strong>. Diese Seite ist eine Demo, daher sind Links Platzhalter – in einer
                 echten VTC würden hier die finalen Einladungslinks stehen.
               </p>
               <ul class="contact-list">
-                <li><span class="pill">Facebook</span> HeimHafen VTC Design (Kontakt & Design)</li>
+                <li><span class="pill">Facebook</span> HeimHafen VTC Design (Kontakt &amp; Design)</li>
                 <li><span class="pill">Discord</span> Link zur VTC-Community (noch Platzhalter)</li>
                 <li><span class="pill">Spiel</span> Euro Truck Simulator 2 · TruckersMP optional</li>
               </ul>
+              <div style="margin-top: var(--space-m);">
+                <a href="#" class="btn btn--primary" role="button">Discord öffnen</a>
+              </div>
+              <p class="contact-note">
+                Hinweis: Diese Seite ist eine Demo – Links dienen nur als Platzhalter.
+              </p>
             </div>
 
             <div class="contact-card">
+              <h3>Deine erste Nachricht</h3>
               <p><strong>Was du in der ersten Nachricht schreiben kannst:</strong></p>
               <ul class="contact-list">
                 <li>Wie alt du bist und aus welcher Region du kommst</li>
