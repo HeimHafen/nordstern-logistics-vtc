@@ -648,7 +648,7 @@
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: var(--space-l);
+      gap: var(--space-xl);
       align-items: flex-start;
     }
 
@@ -685,6 +685,11 @@
     .contact-card p {
       margin-top: 0;
       color: var(--color-text-soft);
+    }
+
+    /* extra Rhythmus: erster Absatz in der Card bekommt etwas mehr Abstand nach unten */
+    .contact-card p:first-of-type {
+      margin-bottom: var(--space-s);
     }
 
     .contact-list {
@@ -1060,6 +1065,7 @@
                 <li><span class="pill">Spiel</span> Euro Truck Simulator 2 · TruckersMP optional</li>
               </ul>
               <div style="margin-top: var(--space-m);">
+                <!-- Hier später den echten Discord-Invite-Link einsetzen -->
                 <a href="#" class="btn btn--primary" role="button">Discord öffnen</a>
               </div>
               <p class="contact-note">
