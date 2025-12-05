@@ -10,21 +10,23 @@
     /* ========== Basis-Styles & Variablen ========== */
 
     :root {
-      --color-bg: #050910;
-      --color-bg-soft: #0b1019;
-      --color-surface: #141b27;
-      --color-surface-soft: #1b2432;
+      /* Dunkle Basis an das App-Design angelehnt */
+      --color-bg: #020617;
+      --color-bg-soft: #020b1f;
+      --color-surface: #0b1220;
+      --color-surface-soft: #111827;
 
-      --color-primary: #4cc2ff;
-      --color-primary-soft: rgba(76, 194, 255, 0.16);
-      --color-accent: #ffd56b;
+      /* Primär: Nordstern-Blau (für Buttons, Links etc.) */
+      --color-primary: #40c0f0;
+      --color-primary-soft: rgba(64, 192, 240, 0.16);
 
-      /* Logo-Farbe (für "klar strukturiert") */
-      --color-logo: #e1d9c3;
+      /* Sekundär / Logo-Ton: Beige aus dem Logo */
+      --color-logo: #f0e0c0;
+      --color-accent: var(--color-logo);
 
-      --color-text: #f7f9ff;
-      --color-text-soft: #a6b0c5;
-      --color-border: #242c3b;
+      --color-text: #f9fbff;
+      --color-text-soft: #a8b3c7;
+      --color-border: #293344;
 
       --radius-s: 6px;
       --radius-m: 10px;
@@ -52,7 +54,7 @@
       margin: 0;
       padding: 0;
       font-family: var(--font-sans);
-      background: radial-gradient(circle at top, #1a2333 0, #050910 55%);
+      background: radial-gradient(circle at top, #111827 0, var(--color-bg) 55%);
       color: var(--color-text);
       line-height: 1.6;
     }
@@ -91,8 +93,8 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(16px);
-      background: rgba(5, 9, 16, 0.9);
-      border-bottom: 1px solid rgba(36, 44, 59, 0.8);
+      background: rgba(2, 6, 23, 0.9);
+      border-bottom: 1px solid rgba(41, 51, 68, 0.85);
     }
 
     .site-header__inner {
@@ -108,15 +110,15 @@
       gap: var(--space-s);
     }
 
-    /* >>> Logo nochmals größer + leicht nach rechts geschoben <<< */
+    /* Logo-Kreis leicht hervorgehoben */
     .site-brand__logo {
       width: 80px;
       height: 80px;
       border-radius: 50%;
       overflow: hidden;
-      box-shadow: 0 0 0 2px rgba(76, 194, 255, 0.25);
+      box-shadow: 0 0 0 2px rgba(64, 192, 240, 0.35);
       flex-shrink: 0;
-      margin-left: 6px; /* schiebt den Kreis von der Kante weg */
+      margin-left: 6px;
     }
 
     .site-brand__logo img {
@@ -172,8 +174,8 @@
       cursor: pointer;
       font-size: 0.9rem;
       font-weight: 500;
-      background: linear-gradient(135deg, var(--color-primary), #68f4ff);
-      color: #050910;
+      background: linear-gradient(135deg, var(--color-primary), #7fe3ff);
+      color: #020617;
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
     }
 
@@ -215,7 +217,7 @@
         right: 0;
         left: 0;
         flex-direction: column;
-        background: #050910;
+        background: var(--color-bg);
         border-bottom: 1px solid var(--color-border);
         padding: var(--space-m);
         gap: var(--space-s);
@@ -260,7 +262,7 @@
       margin: 0 0 var(--space-m);
     }
 
-    /* Hier Logo-Farbe für das span im Titel */
+    /* Logo-Farbe im Claim */
     .hero__title span {
       color: var(--color-logo);
     }
@@ -295,14 +297,14 @@
     }
 
     .btn--primary {
-      background: linear-gradient(135deg, var(--color-primary), #7ff6ff);
-      color: #050910;
+      background: linear-gradient(135deg, var(--color-primary), #7fe3ff);
+      color: #020617;
       box-shadow: var(--shadow-soft);
     }
 
     .btn--ghost {
       background: transparent;
-      border-color: rgba(166, 176, 197, 0.45);
+      border-color: rgba(168, 179, 199, 0.45);
       color: var(--color-text-soft);
     }
 
@@ -330,15 +332,16 @@
       height: 8px;
       border-radius: 999px;
       background: var(--color-accent);
-      box-shadow: 0 0 8px rgba(255, 213, 107, 0.7);
+      box-shadow: 0 0 8px rgba(240, 224, 192, 0.7);
     }
 
     .hero__card {
-      background: radial-gradient(circle at top left, rgba(76, 194, 255, 0.18), transparent 50%),
-                  linear-gradient(145deg, #141b27, #090f19);
+      background:
+        radial-gradient(circle at top left, var(--color-primary-soft), transparent 55%),
+        linear-gradient(145deg, var(--color-surface), var(--color-bg-soft));
       border-radius: var(--radius-l);
       padding: var(--space-l);
-      border: 1px solid rgba(76, 194, 255, 0.18);
+      border: 1px solid rgba(64, 192, 240, 0.25);
       box-shadow: var(--shadow-soft);
     }
 
@@ -379,7 +382,7 @@
     .hero__card-tagline {
       font-size: 0.82rem;
       color: var(--color-text-soft);
-      border-top: 1px dashed rgba(166, 176, 197, 0.4);
+      border-top: 1px dashed rgba(168, 179, 199, 0.4);
       padding-top: var(--space-s);
     }
 
@@ -390,7 +393,7 @@
     }
 
     .section--alt {
-      background: radial-gradient(circle at top, rgba(76, 194, 255, 0.1), transparent 55%);
+      background: radial-gradient(circle at top, rgba(64, 192, 240, 0.1), transparent 55%);
     }
 
     .section__header {
@@ -437,10 +440,10 @@
     }
 
     .feature-card {
-      background: linear-gradient(145deg, #141b27, #101621);
+      background: linear-gradient(145deg, var(--color-surface), var(--color-surface-soft));
       border-radius: var(--radius-m);
       padding: var(--space-m);
-      border: 1px solid rgba(36, 44, 59, 0.9);
+      border: 1px solid rgba(41, 51, 68, 0.9);
     }
 
     .feature-card__label {
@@ -465,7 +468,7 @@
       font-size: 0.8rem;
       color: var(--color-text-soft);
       margin-top: var(--space-s);
-      border-top: 1px dashed rgba(36, 44, 59, 0.9);
+      border-top: 1px dashed rgba(41, 51, 68, 0.9);
       padding-top: var(--space-xs);
     }
 
@@ -485,10 +488,10 @@
     }
 
     .about-highlight {
-      background: linear-gradient(145deg, #141b27, #101724);
+      background: linear-gradient(145deg, var(--color-surface), var(--color-surface-soft));
       border-radius: var(--radius-m);
       padding: var(--space-m);
-      border: 1px solid rgba(76, 194, 255, 0.2);
+      border: 1px solid rgba(64, 192, 240, 0.24);
       font-size: 0.9rem;
       color: var(--color-text-soft);
     }
@@ -523,10 +526,10 @@
     }
 
     .step-card {
-      background: linear-gradient(145deg, #141b27, #101621);
+      background: linear-gradient(145deg, var(--color-surface), var(--color-surface-soft));
       border-radius: var(--radius-m);
       padding: var(--space-m);
-      border: 1px solid rgba(36, 44, 59, 0.9);
+      border: 1px solid rgba(41, 51, 68, 0.9);
     }
 
     .step-card__badge {
@@ -538,8 +541,8 @@
       justify-content: center;
       font-size: 0.85rem;
       font-weight: 600;
-      background: var(--color-primary-soft);
-      color: var(--color-primary);
+      background: rgba(240, 224, 192, 0.12);
+      color: var(--color-accent);
       margin-bottom: var(--space-s);
     }
 
@@ -569,10 +572,10 @@
     }
 
     .contact-card {
-      background: linear-gradient(145deg, #141b27, #101621);
+      background: linear-gradient(145deg, var(--color-surface), var(--color-surface-soft));
       border-radius: var(--radius-m);
       padding: var(--space-m);
-      border: 1px solid rgba(36, 44, 59, 0.9);
+      border: 1px solid rgba(41, 51, 68, 0.9);
       font-size: 0.9rem;
     }
 
@@ -599,7 +602,7 @@
       gap: 0.35rem;
       padding: 0.15rem 0.55rem;
       border-radius: 999px;
-      background: rgba(76, 194, 255, 0.12);
+      background: var(--color-primary-soft);
       color: var(--color-primary);
       font-size: 0.78rem;
     }
